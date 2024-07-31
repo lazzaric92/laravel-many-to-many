@@ -37,6 +37,11 @@ class UpdateProjectRequest extends FormRequest
     {
         return [
             'title.required' => 'A title is required',
+            'date.required' => 'Select a date',
+            'github.required' => 'The github url is required',
+            'type_id.required' => 'Select a type',
+            'technologies.required' => 'Select at least a technology',
+            'description.required' => 'Brevity is the Soul of Wit, but this project needs a description',
             'description.min' => 'Brevity is the Soul of Wit, but this project needs a description',
         ];
     }

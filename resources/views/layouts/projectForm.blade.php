@@ -20,6 +20,7 @@
                 <div class="mb-3">
                     <label for="type_id" class="form-label text-white">Type</label>
                     <select class="form-select" aria-label="Default select example" name="type_id" id="type_id">
+                        <option disabled selected>-- Select a type --</option>
                         @foreach ($types as $type)
                             <option value="{{$type->id}}" {{($type->id == old('type_id', $project->type_id)) ? 'selected' : ''}}>{{$type->name}}</option>
                         @endforeach
@@ -48,11 +49,9 @@
                                 <input type="checkbox" name="technologies[]" class="btn-check" id="technology-check-{{$technology->id}}" autocomplete="off" value="{{$technology->id}}" {{$project->technologies->contains($technology) ? 'checked' : ''}} >
                                 <label class="btn btn-outline-light my-2 mx-1 rounded" for="technology-check-{{$technology->id}}">{{$technology->name}}</label>
                             @endif
-
                         @endforeach
-
                     </div>
-                    @error('languages')
+                    @error('technologies')
                         <p class="mt-1 p-1 px-2 rounded">{{$message}}</p>
                     @enderror
                 </div>
