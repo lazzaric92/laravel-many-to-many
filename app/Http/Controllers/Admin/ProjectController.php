@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
+use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +29,8 @@ class ProjectController extends Controller
     public function create(Project $project)
     {
         $types = Type::all();
-        return view('admin.projects.create', compact('project', 'types'));
+        $technologies = Technology::all();
+        return view('admin.projects.create', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -37,8 +39,9 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         $data = $request->validated();
-        $data['user_id'] = Auth::user()->id;
+        $data['user_id'] = Auth::user()->id;  // or Auth::id()
         $newProject = Project::create($data);
+        $newProject->technologies()->sync($data['technologies']);
 
         return redirect()->route('admin.projects.show', $newProject);
     }
@@ -57,7 +60,8 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $types = Type::all();
-        return view('admin.projects.edit', compact('project', 'types'));
+        $technologies = Technology::all();
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -67,6 +71,7 @@ class ProjectController extends Controller
     {
         $data = $request->validated();
         $project->update($data);
+        $project->technologies()->sync($data['technologies']);
         return redirect()->route('admin.projects.show', $project)->with('message', $project->title.' was updated succesfully');
     }
 
@@ -76,7 +81,7 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
-        return redirect()->route('admin.projects.index')->with('message', $project['title'] . 'has been deleted');
+        return redirect()->route('admin.projects.index')->with('message', $project['title'] . ' has been deleted');
     }
 
     /**
@@ -95,7 +100,7 @@ class ProjectController extends Controller
     {
         $project = Project::onlyTrashed()->findOrFail($id);
         $project->restore();
-        return redirect()->route('admin.projects.deleted', compact('id'))->with('message', $project['title'] . 'has been restored');
+        return redirect()->route('admin.projects.deleted', compact('id'))->with('message', $project['title'] . ' has been restored');
     }
 
     /**
@@ -104,7 +109,8 @@ class ProjectController extends Controller
     public function hardDelete(string $id)
     {
         $project = Project::onlyTrashed()->findOrFail($id);
+        $project->technologies()->detach();
         $project->forceDelete();
-        return redirect()->route('admin.projects.deleted', compact('id'))->with('message', $project['title'] . 'has been permanently deleted');
+        return redirect()->route('admin.projects.deleted', compact('id'))->with('message', $project['title'] . ' has been permanently deleted');
     }
 }

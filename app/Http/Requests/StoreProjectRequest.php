@@ -28,7 +28,8 @@ class StoreProjectRequest extends FormRequest
             'date' => 'required|date',
             'github' => 'required|url',
             'image' => 'nullable|url',
-            'type_id' => 'required|integer|exists:types,id'
+            'type_id' => 'required|integer|exists:types,id',
+            'technologies' => 'required|array|exists:technologies,id',
         ];
     }
 

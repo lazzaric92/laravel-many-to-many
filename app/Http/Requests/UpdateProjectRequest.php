@@ -28,7 +28,8 @@ class UpdateProjectRequest extends FormRequest
             'description' => 'required|min:20',
             'github' => 'required|url',
             'image' => 'nullable|url',
-            'type_id' => 'required'|'integer'
+            'type_id' => 'required|integer|exists:types,id',
+            'technologies' => 'required|array|exists:technologies,id',
         ];
     }
 

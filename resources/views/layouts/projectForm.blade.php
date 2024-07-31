@@ -38,8 +38,20 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="languages" class="form-label text-white">Languages</label>
-                    <input type="text" class="form-control" id="languages" name="languages" value="{{old('languages', $project->languages)}}">
+                    <label for="technologies" class="form-label text-white">Technologies</label>
+                    <div class="btn-group d-flex flex-wrap" role="group" aria-label="Basic checkbox toggle button group">
+                        @foreach ($technologies as $technology)
+                            @if ($errors->any())
+                                <input type="checkbox" name="technologies[]" class="btn-check" id="technology-check-{{$technology->id}}" autocomplete="off" value="{{$technology->id}}" {{in_array($technology->id, old('technologies', [])) ? 'checked' : ''}} >
+                                <label class="btn btn-outline-light my-2 mx-1 rounded" for="technology-check-{{$technology->id}}">{{$technology->name}}</label>
+                            @else
+                                <input type="checkbox" name="technologies[]" class="btn-check" id="technology-check-{{$technology->id}}" autocomplete="off" value="{{$technology->id}}" {{$project->technologies->contains($technology) ? 'checked' : ''}} >
+                                <label class="btn btn-outline-light my-2 mx-1 rounded" for="technology-check-{{$technology->id}}">{{$technology->name}}</label>
+                            @endif
+
+                        @endforeach
+
+                    </div>
                     @error('languages')
                         <p class="mt-1 p-1 px-2 rounded">{{$message}}</p>
                     @enderror
