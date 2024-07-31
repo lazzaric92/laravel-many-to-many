@@ -21,10 +21,11 @@
                         @endif
                         <h2 class="text-center fw-bold mb-3 p-3"> #{{$project->id}}: {{$project->title}} </h2>
                         @if ($project->type)
-                            <a href="{{route('admin.types.show', $project->type)}}" class="d-inline-block mb-3 py-2 px-3 rounded rounded-3 text-white text-decoration-none fs-5" style="background-color: {{$project->type->color}}">{{$project->type->name}}</a>
+                            <a href="{{route('admin.types.show', $project->type)}}" class="d-inline-block mb-3 py-2 px-3 rounded rounded-3 text-white text-decoration-none fs-6" style="background-color: {{$project->type->color}}">{{$project->type->name}}</a>
                         @endif
+                        <h3 class="fs-5 mb-3">Author: <em>{{$project->user->name}}</em></h3>
                         <div class="mb-3 d-flex justify-content-between align-items-center">
-                            <p class="mb-0"><em>{{$project->date}}</em></p>
+                            <p class="mb-0">{{$project->date}}</p>
                             <p class="mb-0"> <span><i class="fa-brands fa-github me-2"></i></span> {{$project->github}} </p>
                         </div>
                         <p class="mb-4">Languages: {{$project->languages}}</p>

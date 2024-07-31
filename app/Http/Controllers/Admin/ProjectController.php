@@ -17,7 +17,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::orderBy('date', 'desc')->paginate(15);
+        // $projects = Project::where('user_id', Auth::id())->orderBy('date', 'desc')->paginate(15);   // # a guest user can see only their projects
+        $projects = Project::orderBy('date', 'desc')->paginate(15);  // # an admin user can see all the projects
         return view('admin.projects.index', compact('projects'));
     }
 
@@ -36,7 +37,7 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         $data = $request->validated();
-        $data['author'] = Auth::user()->name;
+        $data['user_id'] = Auth::user()->id;
         $newProject = Project::create($data);
 
         return redirect()->route('admin.projects.show', $newProject);

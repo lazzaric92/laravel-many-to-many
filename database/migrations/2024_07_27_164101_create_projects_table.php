@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('title', 50);
-            $table->string('author', 100);
             $table->text('add_devs')->nullable();
             $table->text('description');
             $table->string('languages', 255);

@@ -14,7 +14,7 @@ class Project extends Model
     protected $fillable = [
         'type_id',
         'title',
-        'author',
+        'user_id',
         'add_devs',
         'description',
         'languages',
@@ -25,5 +25,9 @@ class Project extends Model
 
     public function type(){
         return $this->belongsTo(Type::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

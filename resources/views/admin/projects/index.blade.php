@@ -17,6 +17,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Type</th>
+                    <th scope="col">Author</th>
                     <th scope="col">Title</th>
                     <th scope="col">Languages</th>
                     <th scope="col">Date</th>
@@ -36,9 +37,9 @@
                             @else
                                 ----
                             @endif
-
                         </td>
-                        <td> {{$project->title}} </td>
+                        <td> {{$project->user->name}} </td>
+                        <td> <strong>{{$project->title}}</strong> </td>
                         <td> {{$project->languages}} </td>
                         <td> {{$project->date}} </td>
                         <td>

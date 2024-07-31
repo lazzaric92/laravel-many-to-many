@@ -16,6 +16,8 @@
             <thead class="table-primary">
                 <tr>
                     <th scope="col">#</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Author</th>
                     <th scope="col">Title</th>
                     <th scope="col">Languages</th>
                     <th scope="col">Date</th>
@@ -27,7 +29,17 @@
                 @foreach ($projects as $project)
                     <tr>
                         <td> {{$project->id}} </td>
-                        <td> {{$project->title}} </td>
+                        <td>
+                            @if ($project->type)
+                                <span class="badge p-2" style="background-color: {{$project->type->color}}">
+                                    <a class="text-white text-uppercase fw-bold text-decoration-none" href="{{route('admin.types.show', $project->type)}}">{{$project->type->name}}</a>
+                                </span>
+                            @else
+                                ----
+                            @endif
+                        </td>
+                        <td> {{$project->user->name}} </td>
+                        <td> <strong>{{$project->title}}</strong> </td>
                         <td> {{$project->languages}} </td>
                         <td> {{$project->date}} </td>
                         <td>
