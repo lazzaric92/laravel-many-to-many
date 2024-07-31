@@ -19,7 +19,7 @@
                     <th scope="col">Type</th>
                     <th scope="col">Author</th>
                     <th scope="col">Title</th>
-                    <th scope="col">Languages</th>
+                    <th scope="col">Technologies</th>
                     <th scope="col">Date</th>
                     <th scope="col">Add. devs</th>
                     <th scope="col">Actions</th>
@@ -40,7 +40,16 @@
                         </td>
                         <td> {{$project->user->name}} </td>
                         <td> <strong>{{$project->title}}</strong> </td>
-                        <td> {{$project->languages}} </td>
+                        <td>
+                            @forelse ($project->technologies as $technology)
+                                <span class="badge rounded-pill p-2" style="background-color: {{$technology->color}}">
+                                    {{$technology->name}}
+                                    {{-- <a class="text-white text-uppercase fw-bold text-decoration-none" href="{{route('admin.types.show', $project->type)}}">{{$technology->name}}</a> --}}
+                                </span>
+                            @empty
+                                ----
+                            @endforelse
+                        </td>
                         <td> {{$project->date}} </td>
                         <td>
                             @if ($project->add_devs)

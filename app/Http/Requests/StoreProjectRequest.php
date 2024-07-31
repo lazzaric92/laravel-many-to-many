@@ -25,7 +25,6 @@ class StoreProjectRequest extends FormRequest
             'title' => 'required|unique:projects|min:3|max:50',
             'add_devs' => 'nullable|min:3',
             'description' => 'required|min:20',
-            'languages' => 'required|min:3|max:255',
             'date' => 'required|date',
             'github' => 'required|url',
             'image' => 'nullable|url',

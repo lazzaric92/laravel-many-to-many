@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('title', 50);
             $table->text('add_devs')->nullable();
             $table->text('description');
-            $table->string('languages', 255);
             $table->date('date');
             $table->text('github');
             $table->text('image')->nullable(true);

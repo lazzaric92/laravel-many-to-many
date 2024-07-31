@@ -17,7 +17,6 @@ class Project extends Model
         'user_id',
         'add_devs',
         'description',
-        'languages',
         'date',
         'github',
         'image'

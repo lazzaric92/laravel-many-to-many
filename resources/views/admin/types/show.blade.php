@@ -18,7 +18,7 @@
                         <h2 class="text-center fw-bold mb-3 p-3"> #{{$type->id}}: {{$type->name}} </h2>
                         <h3>
                             Hex color: <em>{{$type->color}}</em>
-                            <div class="d-inline-block badge border border-black p-3 ms-3 align-bottom" style="background-color: {{$type->color}}"></div>
+                            <a href="{{route('admin.types.edit', $type)}}" class="d-inline-block badge border border-black p-3 ms-3 align-bottom" style="background-color: {{$type->color}}"></a>
                         </h3>
                         <div class="mb-3">
                             <h4>List of projects</h4>

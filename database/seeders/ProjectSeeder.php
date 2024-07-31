@@ -26,7 +26,6 @@ class ProjectSeeder extends Seeder
             $newProject->user_id = $faker->randomElement($users);
             $newProject->add_devs = $faker->name();
             $newProject->description = $faker->realText(800);
-            $newProject->languages = $faker->words(3, true);
             $newProject->date = $faker->date();
             $newProject->github = $faker->url();
             $newProject->image = $faker->imageUrl(800, 400, 'projects');

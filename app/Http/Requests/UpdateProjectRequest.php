@@ -26,7 +26,6 @@ class UpdateProjectRequest extends FormRequest
             'title' => ['required', Rule::unique('projects')->ignore($this->route('project')),'min:3','max:50'],
             'add_devs' => 'nullable|min:3',
             'description' => 'required|min:20',
-            'languages' => 'required|min:3|max:255',
             'github' => 'required|url',
             'image' => 'nullable|url',
             'type_id' => 'required'|'integer'
