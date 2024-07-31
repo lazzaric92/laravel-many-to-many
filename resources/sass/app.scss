@@ -1,0 +1,25 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'partials/generic/variables.scss';
+@import 'partials/generic/mixins.scss';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+body{
+    background-image: linear-gradient(-75deg, rgba(98, 6, 142, 0.6) 0%, rgba(12, 34, 149, 0.8) 100%);
+}
+
+form div.mb-3 > p{
+    background-color: rgba(255,255,255,0.5);
+    color: #b10968;
+    font-family: monospace;
+}
+
+li.page-item.active > span.page-link{
+    background-color: #0d9bf0;
+}
+
+
