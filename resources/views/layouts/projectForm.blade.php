@@ -1,9 +1,17 @@
 @extends('layouts.admin')
 
+@section('head-cdn')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+@endsection
+
 @section('content')
     <div class="container">
+        <div>
+            <a href="@yield('back-arrow-href-route')" class="text-white text-tranform-none"><i class="fa-solid fa-left-long fs-2"></i></a>
+        </div>
+
         <div class="row justify-content-center">
-            <h1 class="text-center text-white mb-2 p-3">@yield('page-title')</h1>
+            <h1 class="text-center text-white mb-2 p-3 pt-0">@yield('page-title')</h1>
 
             <form action=" @yield('form-action') " class="@yield('form-classes', 'col-6')" method="POST" data-name="{{$project->title}}">
                 @csrf

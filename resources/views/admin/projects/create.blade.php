@@ -1,5 +1,9 @@
 @extends('layouts.projectForm')
 
+@section('back-arrow-href-route')
+    {{route('admin.projects.index')}}
+@endsection
+
 {{-- <--Title --}}
 @section('page-title', 'Add project')
 

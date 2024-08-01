@@ -1,5 +1,9 @@
 @extends('layouts.projectForm')
 
+@section('back-arrow-href-route')
+    {{route('admin.projects.show', $project)}}
+@endsection
+
 {{-- <--Title --}}
 @section('page-title')
     Editing {{$project->title}}
