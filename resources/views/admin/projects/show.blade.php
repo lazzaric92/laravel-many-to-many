@@ -53,7 +53,11 @@
             </article>
             @if ($project->image)
                 <div class="col-10 text-center mb-4 p-3">
-                    <img src=" {{$project->image}} " alt=" {{$project->title}} screen">
+                    @if (str_starts_with($project->image, 'http'))
+                        <img src=" {{$project->image}} " alt=" {{$project->title}} screen">
+                    @else
+                        <img src=" {{asset('storage/' . $project->image)}} " alt=" {{$project->title}} screen">
+                    @endif
                 </div>
             @endif
             <div class="col-8 d-flex justify-content-between">

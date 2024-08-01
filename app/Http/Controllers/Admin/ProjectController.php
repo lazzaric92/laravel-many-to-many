@@ -10,6 +10,7 @@ use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -38,8 +39,12 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
+        // dd($request->all());
         $data = $request->validated();
+        $img_path = Storage::put('uploads/projects', $data['image']);  // # store the image file in uploads/projects folder and return a local path to the db
+
         $data['user_id'] = Auth::user()->id;  // or Auth::id()
+        $data['image'] = $img_path;
         $newProject = Project::create($data);
         $newProject->technologies()->sync($data['technologies']);
 

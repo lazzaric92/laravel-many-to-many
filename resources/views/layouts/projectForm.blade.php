@@ -13,7 +13,7 @@
         <div class="row justify-content-center">
             <h1 class="text-center text-white mb-2 p-3 pt-0">@yield('page-title')</h1>
 
-            <form action=" @yield('form-action') " class="@yield('form-classes', 'col-6')" method="POST" data-name="{{$project->title}}">
+            <form action=" @yield('form-action') " class="@yield('form-classes', 'col-6')" method="POST" data-name="{{$project->title}}" enctype="multipart/form-data">
                 @csrf
                 @yield('form-method')
 

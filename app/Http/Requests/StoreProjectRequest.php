@@ -21,13 +21,19 @@ class StoreProjectRequest extends FormRequest
      */
     public function rules(): array
     {
+        if (str_starts_with($this->image, 'http')) {
+            $img_validation = 'url';
+        } else {
+            $img_validation = 'image';
+        }
+
         return [
             'title' => 'required|unique:projects|min:3|max:50',
             'add_devs' => 'nullable|min:3',
             'description' => 'required|min:20',
             'date' => 'required|date',
             'github' => 'required|url',
-            'image' => 'nullable|url',
+            'image' => 'nullable|' . $img_validation,
             'type_id' => 'required|integer|exists:types,id',
             'technologies' => 'required|array|exists:technologies,id',
         ];
