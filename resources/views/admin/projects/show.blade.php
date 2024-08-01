@@ -42,12 +42,11 @@
                         </div>
                         <p class="mb-4"> {{$project->description}} </p>
                         <div>
-                            <p class="mb-0">Dev/s: <br>
-                            {{$project->author}} <br>
                             @if ($project->add_devs != 'NULL')
-                                {{$project->add_devs}}
+                                <p class="mb-0">Dev/s: <br>
+                                    {{$project->add_devs}}
+                                </p>
                             @endif
-                            </p>
                         </div>
                     </div>
                 </div>
