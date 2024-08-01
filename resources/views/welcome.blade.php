@@ -17,7 +17,7 @@
     <body>
         <div id="app">
             <header class="mx-0">
-                <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+                <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm welcome-navbar">
                     <div class="container">
                         <a class="navbar-brand" href="{{ url('/') }}">
                             {{ config('app.name', 'Portfolio') }}

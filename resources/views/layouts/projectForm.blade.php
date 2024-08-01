@@ -7,7 +7,7 @@
 @section('content')
     <div class="container">
         <div>
-            <a href="@yield('back-arrow-href-route')" class="text-white text-tranform-none"><i class="fa-solid fa-left-long fs-2"></i></a>
+            <a href="@yield('back-arrow-href-route')" class="text-white text-tranform-none"><i class="fa-solid fa-left-long fs-2 ms-3"></i></a>
         </div>
 
         <div class="row justify-content-center">
@@ -81,8 +81,19 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="image" class="form-label text-white">Image</label>
-                    <input type="text" class="form-control" id="image" name="image" value="{{old('image', $project->image)}}">
+                    <label for="image-radio-group" class="form-label text-white">Choose a way to upload an image</label>
+
+                    <div class="btn-group ms-3 mb-2" id="image-radio-group" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check image-radio" name="btnradio" id="btnradio1" autocomplete="off" value="0">
+                        <label class="btn btn-outline-light" for="btnradio1">File</label>
+
+                        <input type="radio" class="btn-check  image-radio" name="btnradio" id="btnradio2" autocomplete="off" value="1">
+                        <label class="btn btn-outline-light" for="btnradio2">Url</label>
+                    </div>
+
+                    <input type="text" class="form-control image-url d-none" name="image" placeholder = "Image Url" value="{{old('image', $project->image)}}">
+                    <input type="file" class="form-control image-file d-none" name="image" value="{{old('image', $project->image)}}">
+
                     @error('image')
                         <p class="mt-1 p-1 px-2 rounded">{{$message}}</p>
                     @enderror
@@ -104,3 +115,4 @@
         </div>
     </div>
 @endsection
+
