@@ -29,7 +29,7 @@ class UpdateProjectRequest extends FormRequest
         }
 
         return [
-            'title' => 'required|unique:projects|min:3|max:50',
+            'title' => ['required','min:3','max:50', Rule::unique('projects')->ignore($this->route('project'))],
             'add_devs' => 'nullable|min:3',
             'description' => 'required|min:20',
             'date' => 'required|date',
