@@ -30,12 +30,12 @@
                         <td><span class="fw-bold" style="color: {{$type->color}}">{{$type->color}}</span> </td>
                         <td> {{count($type->projects)}} </td>
                         <td>
-                            <a href=" {{route('admin.types.show', $type)}} " class="btn btn-info btn-sm ms-1">Info</a>
-                            <a href="{{route('admin.types.edit', $type)}}" class="btn btn-warning btn-sm ms-1">Edit</a>
+                            <a href=" {{route('admin.types.show', $type)}} " class="btn btn-info btn-sm ms-1 mb-1">Info</a>
+                            <a href="{{route('admin.types.edit', $type)}}" class="btn btn-warning btn-sm ms-1 mb-1">Edit</a>
                             <form action="{{route('admin.types.destroy', $type)}}" method="POST" class="d-inline-block delete-form" data-name="{{$type->name}}">
                                 @csrf
                                 @method('DELETE')
-                                <input type="submit" class="btn btn-secondary btn-sm ms-1" value="Delete">
+                                <input type="submit" class="btn btn-secondary btn-sm ms-1 mb-1" value="Delete">
                             </form>
                         </td>
                     </tr>

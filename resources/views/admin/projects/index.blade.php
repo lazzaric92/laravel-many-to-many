@@ -57,8 +57,8 @@
                             @endif
                         </td>
                         <td>
-                            <a href=" {{route('admin.projects.show', $project)}} " class="btn btn-info btn-sm ms-1">Info</a>
-                            <a href="{{route('admin.projects.edit', $project)}}" class="btn btn-warning btn-sm ms-1">Edit</a>
+                            <a href=" {{route('admin.projects.show', $project)}} " class="btn btn-info btn-sm ms-1 mb-1">Info</a>
+                            <a href="{{route('admin.projects.edit', $project)}}" class="btn btn-warning btn-sm ms-1 mb-1">Edit</a>
                             <form action="{{route('admin.projects.destroy', $project)}}" method="POST" class="d-inline-block delete-form" data-name="{{$project->title}}">
                                 @csrf
                                 @method('DELETE')

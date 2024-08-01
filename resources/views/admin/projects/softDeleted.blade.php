@@ -60,12 +60,12 @@
                             <form action="{{route('admin.projects.restore', $project->id)}}" method="POST" class="d-inline-block">
                                 @csrf
                                 @method('PATCH')
-                                <input type="submit" class="btn btn-primary btn-sm ms-1" value="Restore">
+                                <input type="submit" class="btn btn-primary btn-sm ms-1 mb-1" value="Restore">
                             </form>
                             <form action="{{route('admin.projects.hardDelete', $project->id)}}" method="POST" class="d-inline-block delete-form" data-name="{{$project->title}}">
                                 @csrf
                                 @method('DELETE')
-                                <input type="submit" class="btn btn-secondary btn-sm ms-1" value="Delete">
+                                <input type="submit" class="btn btn-secondary btn-sm ms-1 mb-1" value="Delete">
                             </form>
                         </td>
                     </tr>

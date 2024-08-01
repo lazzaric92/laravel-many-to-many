@@ -21,7 +21,7 @@ class ProjectTechnologySeeder extends Seeder
 
         foreach ($projects as $project){
             // attach technologies id/s
-            $project->technologies()->attach($faker->randomElements($technologies, rand(2,5)));
+            $project->technologies()->attach($faker->randomElements($technologies, rand(2,4)));
         }
     }
 }
