@@ -41,7 +41,7 @@ class ProjectController extends Controller
     {
         // dd($request->all());
         $data = $request->validated();
-        $img_path = Storage::put('uploads/projects', $data['image']);  // # store the image file in uploads/projects folder and return a local path to the db
+        $img_path = Storage::put('projects', $data['image']);  // # store the image file in uploads/projects folder and return a local path to the db
 
         $data['user_id'] = Auth::user()->id;  // or Auth::id()
         $data['image'] = $img_path;
@@ -75,6 +75,8 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         $data = $request->validated();
+        $img_path = Storage::put('projects', $data['image']);
+        $data['image'] = $img_path;
         $project->update($data);
         $project->technologies()->sync($data['technologies']);
         return redirect()->route('admin.projects.show', $project)->with('message', $project->title.' was updated succesfully');

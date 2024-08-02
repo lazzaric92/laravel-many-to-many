@@ -42,7 +42,7 @@
                         </div>
                         <p class="mb-4"> {{$project->description}} </p>
                         <div>
-                            @if ($project->add_devs != 'NULL')
+                            @if ($project->add_devs)
                                 <p class="mb-0">Dev/s: <br>
                                     {{$project->add_devs}}
                                 </p>
@@ -52,11 +52,11 @@
                 </div>
             </article>
             @if ($project->image)
-                <div class="col-10 text-center mb-4 p-3">
+                <div class="image-wrapper col-10 text-center mb-4 p-3">
                     @if (str_starts_with($project->image, 'http'))
-                        <img src=" {{$project->image}} " alt=" {{$project->title}} screen">
+                        <img src="{{$project->image}} " alt=" {{$project->title}} screen">
                     @else
-                        <img src=" {{asset('storage/' . $project->image)}} " alt=" {{$project->title}} screen">
+                        <img src="{{asset('storage/' . $project->image)}} " alt=" {{$project->title}} screen">
                     @endif
                 </div>
             @endif

@@ -21,5 +21,5 @@
 {{-- <-- Script --}}
 @section('custom-script')
     @vite('resources/js/confirm-action/confirm-create.js')
-    @vite('resources/js/projects/createform-image-input.js')
+    @vite('resources/js/projects/form-image-input.js')
 @endsection

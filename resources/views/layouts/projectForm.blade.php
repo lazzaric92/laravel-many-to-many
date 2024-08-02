@@ -13,10 +13,11 @@
         <div class="row justify-content-center">
             <h1 class="text-center text-white mb-2 p-3 pt-0">@yield('page-title')</h1>
 
-            <form action=" @yield('form-action') " class="@yield('form-classes', 'col-6')" method="POST" data-name="{{$project->title}}" enctype="multipart/form-data">
+            <form action=" @yield('form-action') " class="@yield('form-classes', 'col-6')" method="POST" enctype="multipart/form-data" data-name="{{$project->title}}">
                 @csrf
                 @yield('form-method')
 
+                {{-- || TITLE --}}
                 <div class="mb-3">
                     <label for="title" class="form-label text-white">Title</label>
                     <input type="text" class="form-control" id="title" name="title" value="{{old('title', $project->title)}}">
@@ -25,6 +26,7 @@
                     @enderror
                 </div>
 
+                {{-- || TYPE --}}
                 <div class="mb-3">
                     <label for="type_id" class="form-label text-white">Type</label>
                     <select class="form-select" aria-label="Default select example" name="type_id" id="type_id">
@@ -38,6 +40,7 @@
                     @enderror
                 </div>
 
+                {{-- || ADD_DEVS --}}
                 <div class="mb-3">
                     <label for="add_devs" class="form-label text-white">Additional Dev/s</label>
                     <input type="text" class="form-control" id="add_devs" name="add_devs" value="{{old('add_devs', $project->add_devs)}}">
@@ -46,6 +49,7 @@
                     @enderror
                 </div>
 
+                {{-- || TECHNOLOGIES --}}
                 <div class="mb-3">
                     <label for="technologies" class="form-label text-white">Technologies</label>
                     <div class="btn-group d-flex flex-wrap" role="group" aria-label="Basic checkbox toggle button group">
@@ -64,6 +68,7 @@
                     @enderror
                 </div>
 
+                {{-- || DATE --}}
                 <div class="mb-3">
                     <label for="date" class="form-label text-white">Date</label>
                     <input type="date" class="form-control" id="date" name="date" value="{{old('date', $project->date)}}">
@@ -72,6 +77,7 @@
                     @enderror
                 </div>
 
+                {{-- || GITHUB --}}
                 <div class="mb-3">
                     <label for="github" class="form-label text-white">Github url</label>
                     <input type="text" class="form-control" id="github" name="github" value="{{old('github', $project->github)}}">
@@ -80,25 +86,27 @@
                     @enderror
                 </div>
 
+                {{-- || IMAGE --}}
                 <div class="mb-3">
                     <label for="image-radio-group" class="form-label text-white">Choose a way to upload an image</label>
 
                     <div class="btn-group ms-3 mb-2" id="image-radio-group" role="group" aria-label="Basic radio toggle button group">
-                        <input type="radio" class="btn-check image-radio" name="btnradio" id="btnradio1" autocomplete="off" value="0">
+                        <input type="radio" class="btn-check image-radio" name="btnradio" id="btnradio1" autocomplete="off" value="0" {{($project->image == '') || !str_starts_with(old('image', $project->image), 'http') ? 'checked' : ''}}>
                         <label class="btn btn-outline-light" for="btnradio1">File</label>
 
-                        <input type="radio" class="btn-check  image-radio" name="btnradio" id="btnradio2" autocomplete="off" value="1">
+                        <input type="radio" class="btn-check  image-radio" name="btnradio" id="btnradio2" autocomplete="off" value="1" {{str_starts_with(old('image', $project->image), 'http') ? 'checked' : ''}}>
                         <label class="btn btn-outline-light" for="btnradio2">Url</label>
                     </div>
 
-                    <input type="text" class="form-control image-url d-none" name="image" placeholder = "Image Url" value="{{old('image', $project->image)}}">
-                    <input type="file" class="form-control image-file d-none" name="image" value="{{old('image', $project->image)}}">
+                    <input type="file" class="form-control image-file" name="image" value="{{($project->image == old('image', $project->image) && str_starts_with($project->image, 'http')) ? old('image', $project->image) : ''}}">
+                    <input type="text" class="form-control image-url d-none" name="image" placeholder = "Image Url" value="{{($project->image == old('image', $project->image) && str_starts_with($project->image, 'http')) ? old('image', $project->image) : ''}}">
 
                     @error('image')
                         <p class="mt-1 p-1 px-2 rounded">{{$message}}</p>
                     @enderror
                 </div>
 
+                {{-- || DESCRIPTION --}}
                 <div class="mb-3">
                     <label for="description" class="form-label text-white">Description</label>
                     <textarea class="form-control" name="description" id="description" cols="80" rows="10" placeholder="Write your project description">{{old('description', $project->description)}}</textarea>
