@@ -34,4 +34,16 @@ li.page-item.active > span.page-link{
     max-width: 800px;
 }
 
+li.nav-item.dropdown > ul.dropdown-menu > li:hover > a{
+    color: #9463b8;
+    font-weight: bold;
+}
+
+// || TYPES
+.projectsList-section {
+    a:hover {
+        font-weight: bold;
+    }
+
+}
 

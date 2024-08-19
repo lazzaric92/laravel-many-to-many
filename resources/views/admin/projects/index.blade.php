@@ -42,7 +42,7 @@
                         <td> <strong>{{$project->title}}</strong> </td>
                         <td>
                             @forelse ($project->technologies as $technology)
-                                <span class="badge rounded-pill p-2" style="background-color: {{$technology->color}}">
+                                <span class="badge rounded-pill p-2 mb-1" style="background-color: {{$technology->color}}">
                                     {{$technology->name}}
                                     {{-- <a class="text-white text-uppercase fw-bold text-decoration-none" href="{{route('admin.types.show', $project->type)}}">{{$technology->name}}</a> --}}
                                 </span>

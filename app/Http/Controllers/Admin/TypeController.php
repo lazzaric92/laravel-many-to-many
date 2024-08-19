@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Project;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -45,7 +46,9 @@ class TypeController extends Controller
      */
     public function show(Type $type)
     {
-        return view('admin.types.show', compact('type'));
+        // dd($type->id);
+        $projectsList = Project::where('type_id', $type->id)->orderBy('date', 'desc')->paginate(20);
+        return view('admin.types.show', compact('type', 'projectsList'));
     }
 
     /**

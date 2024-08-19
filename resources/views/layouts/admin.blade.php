@@ -33,20 +33,34 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item mx-2">
-                            <a href="{{route('admin.types.index')}}" class="nav-link">Types</a>
+                        <li class="nav-item dropdown mx-2">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Types
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{route('admin.types.index')}}">Index</a></li>
+                                <li><a class="dropdown-item" href="{{route('admin.types.create')}}">Add a type</a></li>
+                            </ul>
                         </li>
-                        <li class="nav-item mx-2">
-                            <a href="{{route('admin.types.create')}}" class="nav-link">Add a type</a>
+                        <li class="nav-item dropdown mx-2">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Projects
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{route('admin.projects.index')}}">Index</a></li>
+                                <li><a class="dropdown-item" href="{{route('admin.projects.create')}}">Add a project</a></li>
+                                {{-- <li><hr class="dropdown-divider"></li> --}}
+                                <li><a class="dropdown-item" href="{{route('admin.projects.deleted')}}">Bin</a></li>
+                            </ul>
                         </li>
-                        <li class="nav-item mx-2">
-                            <a href="{{route('admin.projects.index')}}" class="nav-link">Projects</a>
-                        </li>
-                        <li class="nav-item mx-2">
-                            <a href=" {{route('admin.projects.create')}} " class="nav-link">Add a project</a>
-                        </li>
-                        <li class="nav-item mx-2">
-                            <a href="{{route('admin.projects.deleted')}}" class="nav-link">Projects bin</a>
+                        <li class="nav-item dropdown mx-2">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Technologies
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Index</a></li>
+                                <li><a class="dropdown-item" href="#">Add a technology</a></li>
+                            </ul>
                         </li>
                     </ul>
 

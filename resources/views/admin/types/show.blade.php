@@ -20,15 +20,17 @@
                             Hex color: <em>{{$type->color}}</em>
                             <a href="{{route('admin.types.edit', $type)}}" class="d-inline-block badge border border-black p-3 ms-3 align-bottom" style="background-color: {{$type->color}}"></a>
                         </h3>
-                        <div class="mb-3">
+                        <div class="projectsList-section mb-3">
                             <h4>List of projects</h4>
                             <ul>
-                                @foreach ($type->projects as $project)
-                                    <li>
-                                        <a class="text-dark text-decoration-none" href="{{route('admin.projects.show', $project)}}">#{{$project->id}} - {{$project->title}}</a>
+                                @foreach ($projectsList as $project)
+                                    <li class="mb-1">
+                                        <a class="text-dark text-decoration-none icon-link icon-link-hover" href="{{route('admin.projects.show', $project)}}">#{{$project->id}} - {{$project->user->name}} - {{$project->title}}
+                                        </a>
                                     </li>
                                 @endforeach
                             </ul>
+                            {{ $projectsList->links() }}
                         </div>
                     </div>
                 </div>
